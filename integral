@@ -1,0 +1,22 @@
+import numpy as np
+
+
+class integralci:
+    def __init__(self, fler, inisillar, artimSayisi, baslangic, bitis):
+        self.fler = fler
+        self.inisillar = inisillar
+        self.artimSayisi = artimSayisi
+        self.U = np.zeros((len(fler), artimSayisi))
+        self.U[0, :] = inisillar
+        self.baslangic = baslangic
+        self.bitis = bitis
+        self.dt=(bitis-baslangic)/self.artimSayisi
+
+    def intSonuc(self):
+        i = 0
+        t=[]
+        self.dt = (self.bitis - self.baslangic) / self.artimSayisi
+        while i < self.artimSayisi:
+            self.U[i + 1, :] = self.U[i, :] + self.fler(self.U[i,:]) * self.dt
+            t.append(self.baslangic+i*self.dt)
+         return self.U,t
