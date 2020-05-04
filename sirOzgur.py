@@ -1,3 +1,4 @@
+# coding=utf-8
 import numpy as np
 
 
@@ -42,7 +43,7 @@ if __name__ == "__main__":
 
     eee = sirOzgur(0.7, 0.3)
 
-    ccc = integralci(eee, [.999, .001, 0], 200, 1.0, 200.0)
+    ccc = integralci(eee, [.999, .001, 0], 2000, 1.0, 200.0)
 
     u, t = ccc.intSonuc()
 
@@ -50,8 +51,8 @@ if __name__ == "__main__":
     print("final values Susceptibles",u[0,-1])
     print("final values Infectibles",u[1,-1])
     print("final values Recovered",u[2,-1])
-    plt.plot(t, u[0, :], label="Susceptible")
-    plt.plot(t, u[1, :], label="Infected")
-    plt.plot(t, u[2, :], label="Recovered")
+    plt.plot(t, u[0, :], label="Aday Hastalar")
+    plt.plot(t, u[1, :], label="Bulasiklar")
+    plt.plot(t, u[2, :], label="Bagisiklar")
     plt.legend()
     plt.show()
